@@ -3,13 +3,16 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class NavigationHelper {
-    ChromeDriver wd;
+public class NavigationHelper extends HelperBase {
     public NavigationHelper(ChromeDriver wd) {
-        this.wd = wd;
+        super(wd);
     }
 
-    public void gotoGroupPage() {
-        wd.findElement(By.linkText("groups")).click();
+    public void goToGroupPage() {
+        click(By.linkText("groups"));
+    }
+
+    public void goToContactPage() {
+        click(By.linkText("home"));
     }
 }
