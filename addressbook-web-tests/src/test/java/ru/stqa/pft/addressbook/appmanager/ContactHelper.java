@@ -18,10 +18,26 @@ public class ContactHelper extends HelperBase {
     }
 
     public void initContactCreation() {
-        click(By.name("add new"));
+        click(By.xpath("//li/a[@href='edit.php']"));
     }
 
     public void submitContactCreation() {
         click(By.name("submit"));
+    }
+
+    public void selectContact() {
+        click(By.name("selected[]"));
+    }
+
+    public void initContactModification() {
+        click(By.xpath("//td/a/img[@title='Edit']"));
+    }
+
+    public void submitContactModification() {
+        click(By.name("update"));
+    }
+
+    public void deleteSelectedContact() {
+        click(By.xpath("//input[@value='Delete']"));
     }
 }
