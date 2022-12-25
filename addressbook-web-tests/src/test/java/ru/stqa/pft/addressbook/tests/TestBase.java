@@ -8,7 +8,7 @@ import static org.openqa.selenium.remote.BrowserType.*;
 
 public class TestBase {
 
-    protected final ApplicationManager app = new ApplicationManager(CHROME);
+    protected final ApplicationManager app = new ApplicationManager(FIREFOX);
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
