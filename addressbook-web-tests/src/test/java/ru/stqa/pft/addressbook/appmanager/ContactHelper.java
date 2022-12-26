@@ -48,4 +48,22 @@ public class ContactHelper extends HelperBase {
     public void deleteSelectedContact() {
         click(By.xpath("//input[@value='Delete']"));
     }
+
+    public void goToContactPage() {
+        if (isElementPresent(By.id("maintable"))) {
+            return;
+        }
+        click(By.linkText("home"));
+    }
+
+    public void createContact(ContactData contact,boolean creation) {
+        initContactCreation();
+        fillContactFrom(contact,creation);
+        submitContactCreation();
+        goToContactPage();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
 }
