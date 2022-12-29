@@ -19,4 +19,6 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 /gradle/wrapper/
-/addressbook-web-tests/build.gradle
+
+/addressbook-web-tests/gradle/wrapper/gradle-wrapper.jar
+/addressbook-web-tests/gradle/wrapper/gradle-wrapper.properties
