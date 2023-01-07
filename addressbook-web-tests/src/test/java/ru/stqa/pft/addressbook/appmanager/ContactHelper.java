@@ -88,6 +88,7 @@ public class ContactHelper extends HelperBase {
         submitContactCreation();
         returnToContactPage();
     }
+
     public void modifyContact(int index, ContactData contact) {
         selectContact(index);
         initContactModification(index);
@@ -111,10 +112,8 @@ public class ContactHelper extends HelperBase {
             String firstName = element.findElement(By.xpath("td[3]")).getText();
             String lastName = element.findElement(By.xpath("td[2]")).getText();
             String address = element.findElement(By.xpath("td[4]")).getText();
-            String phones = element.findElement(By.xpath("td[6]")).getText();
-            String email = element.findElement(By.xpath("td[5]")).getText();
             int id = Integer.parseInt(element.findElement(By.xpath("td/input")).getAttribute("value"));
-            ContactData contact = new ContactData(id, firstName, lastName, address, phones, email, null);
+            ContactData contact = new ContactData(id, firstName, lastName, address, null, null, null);
             contacts.add(contact);
         }
         return contacts;

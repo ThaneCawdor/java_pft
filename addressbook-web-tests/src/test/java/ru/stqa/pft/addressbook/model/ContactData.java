@@ -4,13 +4,13 @@ import java.util.Objects;
 
 public class ContactData {
 
-    private int id;
     private final String firstName;
     private final String lastName;
     private final String address;
     private final String phones;
     private final String email;
     private final String group;
+    private int id;
 
 
     public ContactData(int id, String firstName, String lastName, String address, String phones, String email, String group) {
@@ -33,12 +33,12 @@ public class ContactData {
         this.group = group;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -78,12 +78,12 @@ public class ContactData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
-        return Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(address, that.address) && Objects.equals(phones, that.phones) && Objects.equals(email, that.email) && Objects.equals(group, that.group);
+        return Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(address, that.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, address, phones, email, group);
+        return Objects.hash(firstName, lastName, address);
     }
 }
 
