@@ -81,10 +81,18 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("home"));
     }
 
+
     public void createContact(ContactData contact) {
         initContactCreation();
         fillContactFrom(contact);
         submitContactCreation();
+        returnToContactPage();
+    }
+    public void modifyContact(int index, ContactData contact) {
+        selectContact(index);
+        initContactModification(index);
+        fillContactFrom(contact, false);
+        submitContactModification();
         returnToContactPage();
     }
 
