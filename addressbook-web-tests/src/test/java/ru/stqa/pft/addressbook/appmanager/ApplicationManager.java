@@ -9,12 +9,12 @@ import org.openqa.selenium.safari.SafariDriver;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
+    private final String browser;
     WebDriver wd;
     private GroupHelper groupHelper;
     private NavigationHelper navigationHelper;
     private SessionHelper sessionHelper;
     private ContactHelper contactHelper;
-    private final String browser;
 
     public ApplicationManager(String browser) {
         this.browser = browser;

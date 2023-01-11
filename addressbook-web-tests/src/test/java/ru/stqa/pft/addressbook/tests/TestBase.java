@@ -4,7 +4,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 
-import static org.openqa.selenium.remote.BrowserType.*;
+import static org.openqa.selenium.remote.BrowserType.CHROME;
 
 public class TestBase {
 
