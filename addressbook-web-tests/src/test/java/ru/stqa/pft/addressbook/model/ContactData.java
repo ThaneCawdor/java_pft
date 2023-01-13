@@ -11,12 +11,14 @@ public class ContactData {
     private String homePhone;
     private String mobilePhone;
     private String workPhone;
+    private String home2;
     private String allEmail;
     private String email1;
     private String email2;
     private String email3;
     private String group;
     private int id = Integer.MAX_VALUE;
+
 
     public int getId() {
         return id;
@@ -70,6 +72,10 @@ public class ContactData {
         return workPhone;
     }
 
+    public String getHome2() {
+        return home2;
+    }
+
     public ContactData withEmail3(String email3) {
         this.email3 = email3;
         return this;
@@ -102,6 +108,11 @@ public class ContactData {
 
     public ContactData withWorkPhone(String workPhone) {
         this.workPhone = workPhone;
+        return this;
+    }
+
+    public ContactData withHome2(String home2) {
+        this.home2 = home2;
         return this;
     }
 
