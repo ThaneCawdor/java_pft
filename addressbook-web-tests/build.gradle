@@ -12,6 +12,7 @@ dependencies {
     implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
     testImplementation 'org.hamcrest:hamcrest:2.2'
     implementation 'com.beust:jcommander:1.78'
+    implementation 'com.thoughtworks.xstream:xstream:1.4.19'
 }
 
 test {

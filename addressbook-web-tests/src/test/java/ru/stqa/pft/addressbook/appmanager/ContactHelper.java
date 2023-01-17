@@ -22,7 +22,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("firstname"), contactData.getFirstName());
         type(By.name("lastname"), contactData.getLastName());
         type(By.name("address"), contactData.getAddress());
-        type(By.name("mobile"), contactData.getAllPhones());
+        type(By.name("mobile"), contactData.getMobilePhone());
         type(By.name("email"), contactData.getAllEmail());
 
         if (creation) {
@@ -40,8 +40,8 @@ public class ContactHelper extends HelperBase {
         type(By.name("firstname"), contactData.getFirstName());
         type(By.name("lastname"), contactData.getLastName());
         type(By.name("address"), contactData.getAddress());
-        type(By.name("mobile"), contactData.getAllPhones());
-        type(By.name("email"), contactData.getAllEmail());
+        type(By.name("mobile"), contactData.getMobilePhone());
+        type(By.name("email"), contactData.getEmail1());
         attach(By.name("photo"), contactData.getPhoto());
 
         if (isElementPresent(By.name("new_group"))) {
