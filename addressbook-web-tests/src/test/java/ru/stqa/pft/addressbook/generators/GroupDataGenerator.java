@@ -43,7 +43,7 @@ public class GroupDataGenerator {
             saveAsCsv(groups, new File(file));
         } else if (format.equals("xml")) {
             saveAsXml(groups, new File(file));
-        } else if (format.equals("json")){
+        } else if (format.equals("json")) {
             saveAsJson(groups, new File(file));
         } else {
             System.out.println("Unrecognized format " + format);

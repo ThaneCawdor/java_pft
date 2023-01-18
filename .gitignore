@@ -23,3 +23,4 @@ gradle-app.setting
 /addressbook-web-tests/gradle/wrapper/gradle-wrapper.jar
 /addressbook-web-tests/gradle/wrapper/gradle-wrapper.properties
 /addressbook-web-tests/src/test/resources/
+.DS_Store
