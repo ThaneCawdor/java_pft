@@ -22,33 +22,35 @@ public class ContactCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validContactsFromXml() throws IOException {
         //File photo = new File("src/test/resources/max.jpg");
-        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/contacts.xml"));
-        String xml = "";
-        String line = reader.readLine();
-        while (line != null) {
-            xml += line;
-            line = reader.readLine();
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/contacts.xml"))) {
+            String xml = "";
+            String line = reader.readLine();
+            while (line != null) {
+                xml += line;
+                line = reader.readLine();
+            }
+            XStream xStream = new XStream();
+            xStream.processAnnotations(ContactData.class);
+            xStream.allowTypes(new Class[]{ContactData.class});
+            List<ContactData> contacts = (List<ContactData>) xStream.fromXML(xml);
+            return contacts.stream().map(c -> new Object[]{c}).toList().iterator();
         }
-        XStream xStream = new XStream();
-        xStream.processAnnotations(ContactData.class);
-        xStream.allowTypes(new Class[]{ContactData.class});
-        List<ContactData> contacts = (List<ContactData>) xStream.fromXML(xml);
-        return contacts.stream().map(c -> new Object[]{c}).toList().iterator();
     }
 
     @DataProvider
     public Iterator<Object[]> validContactsFromJson() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/contacts.json"));
-        String json = "";
-        String line = reader.readLine();
-        while (line != null) {
-            json += line;
-            line = reader.readLine();
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/contacts.json"))) {
+            String json = "";
+            String line = reader.readLine();
+            while (line != null) {
+                json += line;
+                line = reader.readLine();
+            }
+            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+            List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>() {
+            }.getType());
+            return contacts.stream().map(c -> new Object[]{c}).toList().iterator();
         }
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-        List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>() {
-        }.getType());
-        return contacts.stream().map(c -> new Object[]{c}).toList().iterator();
     }
 
     @Test(dataProvider = "validContactsFromJson")
