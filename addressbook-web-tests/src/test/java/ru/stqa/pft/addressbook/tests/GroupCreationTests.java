@@ -20,6 +20,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTests extends TestBase {
 
+
     @DataProvider
     public Iterator<Object[]> validGroupsFromXml() throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/groups.xml"))) {
@@ -47,7 +48,8 @@ public class GroupCreationTests extends TestBase {
                 line = reader.readLine();
             }
             Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-            List<GroupData> groups = gson.fromJson(json, new TypeToken<List<GroupData>>() {}.getType());
+            List<GroupData> groups = gson.fromJson(json, new TypeToken<List<GroupData>>() {
+            }.getType());
             return groups.stream().map(g -> new Object[]{g}).toList().iterator();
         }
     }
