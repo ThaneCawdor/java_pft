@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
@@ -16,10 +17,11 @@ public class ContactFieldsTests extends TestBase {
         return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
     }
 
+    @BeforeMethod
     public void ensurePreconditions() {
-        app.goTo().contactPage();
-        if (app.contact().all().size() == 0) {
-            app.contact().create(new ContactData().withFirstName("Max").withLastName("Payne").withAddress("Brooklyn").withAllPhones("+17184848122").withAllEmail("www.valorservice.com"));
+        if (app.db().contacts().size() == 0) {
+            app.goTo().contactPage();
+            app.contact().create(new ContactData().withFirstName("Max").withLastName("Payne").withAddress("Brooklyn").withMobilePhone("+17184848122").withEmail1("www.valorservice.com"));
         }
     }
 

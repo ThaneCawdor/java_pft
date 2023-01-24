@@ -23,7 +23,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("lastname"), contactData.getLastName());
         type(By.name("address"), contactData.getAddress());
         type(By.name("mobile"), contactData.getMobilePhone());
-        type(By.name("email"), contactData.getAllEmail());
+        type(By.name("email"), contactData.getEmail1());
 
         if (creation) {
             try {
