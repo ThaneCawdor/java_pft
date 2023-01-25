@@ -22,10 +22,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.openqa.selenium.remote.BrowserType.CHROME;
 
 public class TestBase {
-    Logger logger = LoggerFactory.getLogger(GroupCreationTests.class);
-
     protected static final ApplicationManager app
             = new ApplicationManager(System.getProperty("browser", CHROME));
+    Logger logger = LoggerFactory.getLogger(GroupCreationTests.class);
 
     @BeforeSuite(alwaysRun = true)
     public void setUp() throws IOException {
@@ -56,6 +55,7 @@ public class TestBase {
                     .collect(Collectors.toSet())));
         }
     }
+
     public void verifyContactListInUi() {
         if (Boolean.getBoolean("verifyUI")) {
             Contacts dbContacts = app.db().contacts();
