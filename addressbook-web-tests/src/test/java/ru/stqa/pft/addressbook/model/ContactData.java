@@ -15,6 +15,10 @@ import java.util.Set;
 @Entity
 @Table(name = "addressbook")
 public class ContactData {
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "address_in_groups",
+            joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private final Set<GroupData> groups = new HashSet<>();
     @XStreamOmitField
     @Id
     @Column(name = "id")
@@ -60,10 +64,6 @@ public class ContactData {
     @Type(type = "text")
     @Transient
     private File photo;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "address_in_groups",
-            joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
-    private final Set<GroupData> groups = new HashSet<>();
 
     public File getPhoto() {
         return photo;
@@ -217,6 +217,13 @@ public class ContactData {
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, address, allPhones, allEmail);
     }
+
+
+    public ContactData inGroup(GroupData group) {
+        groups.add(group);
+        return this;
+    }
 }
+
 
 
