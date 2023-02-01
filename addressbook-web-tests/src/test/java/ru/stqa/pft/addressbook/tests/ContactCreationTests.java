@@ -60,7 +60,7 @@ public class ContactCreationTests extends TestBase {
     public void ensurePreconditions() {
         if (app.db().groups().size() == 0) {
             app.goTo().groupPage();
-            app.group().create(new GroupData().withName("test1"));
+            app.group().create(new GroupData().withName("test 1"));
         }
     }
 
@@ -69,7 +69,7 @@ public class ContactCreationTests extends TestBase {
         Groups groups = app.db().groups();
         app.goTo().contactPage();
         Contacts before = app.db().contacts();
-        app.contact().create(contact.inGroup(groups.iterator().next().withName("test 2")));
+        app.contact().create(contact.inGroup(groups.iterator().next()));
         assertThat(app.contact().count(), equalTo(before.size() + 1));
         Contacts after = app.db().contacts();
         assertThat(after, equalTo(
@@ -79,10 +79,11 @@ public class ContactCreationTests extends TestBase {
 
     @Test
     public void testBadContactCreation() {
+        Groups groups = app.db().groups();
         app.goTo().contactPage();
         Contacts before = app.db().contacts();
         ContactData contact = new ContactData().withFirstName("Max'").withLastName("Payne").withAddress("Brooklyn").withMobilePhone("+17184848122").withEmail1("www.valorservice.com");
-        app.contact().create(contact);
+        app.contact().create(contact.inGroup(groups.iterator().next()));
         assertThat(app.contact().count(), equalTo(before.size()));
         Contacts after = app.db().contacts();
         assertThat(after, equalTo(before));
