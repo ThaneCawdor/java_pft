@@ -17,6 +17,15 @@ public class AddContactInGroupTest extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
+        if (app.db().contacts().size() == 0) {
+            app.goTo().contactPage();
+            app.contact().create(new ContactData().withFirstName("Max").withLastName("Payne")
+                    .withAddress("Brooklyn").withMobilePhone("+17184848122").withEmail1("www.valorservice.com"));
+        }
+        if (app.db().groups().size() == 0) {
+            app.goTo().groupPage();
+            app.group().create(new GroupData().withName("test1"));
+        }
         Groups groups = app.db().groups();
         if (groupWithoutContact(groups) == null) {
             app.goTo().groupPage();

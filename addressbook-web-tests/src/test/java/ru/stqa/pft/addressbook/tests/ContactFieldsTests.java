@@ -21,7 +21,8 @@ public class ContactFieldsTests extends TestBase {
     public void ensurePreconditions() {
         if (app.db().contacts().size() == 0) {
             app.goTo().contactPage();
-            app.contact().create(new ContactData().withFirstName("Max").withLastName("Payne").withAddress("Brooklyn").withMobilePhone("+17184848122").withEmail1("www.valorservice.com"));
+            app.contact().create(new ContactData().withFirstName("Max").withLastName("Payne")
+                    .withAddress("Brooklyn").withMobilePhone("+17184848122").withEmail1("www.valorservice.com"));
         }
     }
 
