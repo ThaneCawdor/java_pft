@@ -61,7 +61,7 @@ public class ApplicationManager {
         return registrationHelper;
     }
 
-    public AuthorizationHelper authorization() {
+    public AuthorizationHelper authorization() throws IOException {
         if (authorizationHelper == null) {
             authorizationHelper = new AuthorizationHelper(this);
         }
@@ -86,7 +86,7 @@ public class ApplicationManager {
                 wd = new SafariDriver();
             }
             wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-            wd.get(properties.getProperty("web.baseUrl"));
+            wd.get(properties.getProperty("web.baseUrl1"));
         }
         return wd;
     }

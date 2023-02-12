@@ -9,6 +9,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -55,7 +56,7 @@ public class AddContactInGroupTest extends TestBase {
 
     public GroupData groupWithoutContact(Groups group) {
         Groups groups = app.db().groups();
-        List<GroupData> groupsF = groups.stream().filter(g -> g.getContacts().size() == 0).toList();
+        List<GroupData> groupsF = groups.stream().filter(g -> g.getContacts().size() == 0).collect(Collectors.toList());
         if (groupsF.isEmpty()) {
             return null;
         }
