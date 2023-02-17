@@ -1,8 +1,8 @@
-package ru.stqa.pft.rest;
+package model;
 
 import java.util.Objects;
 
-public class Issue {
+public class IssueData {
     private int id;
     private String subject;
     private String description;
@@ -11,7 +11,7 @@ public class Issue {
         return id;
     }
 
-    public Issue withId(int id) {
+    public IssueData withId(int id) {
         this.id = id;
         return this;
     }
@@ -20,7 +20,7 @@ public class Issue {
         return subject;
     }
 
-    public Issue withSubject(String subject) {
+    public IssueData withSubject(String subject) {
         this.subject = subject;
         return this;
     }
@@ -29,7 +29,7 @@ public class Issue {
         return description;
     }
 
-    public Issue withDescription(String description) {
+    public IssueData withDescription(String description) {
         this.description = description;
         return this;
     }
@@ -38,8 +38,8 @@ public class Issue {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Issue issue = (Issue) o;
-        return id == issue.id && Objects.equals(subject, issue.subject) && Objects.equals(description, issue.description);
+        IssueData issueData = (IssueData) o;
+        return id == issueData.id && Objects.equals(subject, issueData.subject) && Objects.equals(description, issueData.description);
     }
 
     @Override

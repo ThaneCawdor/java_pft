@@ -1,10 +1,10 @@
-package ru.stqa.pft.rest;
+package tests;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
-import org.apache.http.client.fluent.Executor;
+import model.IssueData;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.message.BasicNameValuePair;
 import org.testng.annotations.Test;
@@ -14,10 +14,11 @@ import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
 
-public class RestTests {
+public class RestTests extends TestBase {
 
     @Test
     public void testCreateIssue() throws IOException {
+        skipIfNotFixed(105);
         Set<IssueData> oldIssueData = getIssues();
         IssueData newIssue = new IssueData().withSubject("Test issueV").withDescription("New test issueV");
         int issueId = createIssue(newIssue);
@@ -33,10 +34,6 @@ public class RestTests {
         JsonElement issues = parsed.getAsJsonObject().get("issues");
         return new Gson().fromJson(issues, new TypeToken<Set<IssueData>>() {
         }.getType());
-    }
-
-    private Executor getExecutor() {
-        return Executor.newInstance().auth("7172fcb5f1888f5fac3dced24caeaa6a", "");
     }
 
     private int createIssue(IssueData newIssueData) throws IOException {

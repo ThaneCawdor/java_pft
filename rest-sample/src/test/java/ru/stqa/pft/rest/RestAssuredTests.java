@@ -23,26 +23,26 @@ public class RestAssuredTests {
 
     @Test
     public void testCreateIssue() throws IOException {
-        Set<Issue> oldIssues = getIssues();
-        Issue newIssue = new Issue().withSubject("Test issueV").withDescription("New test issueV");
-        int issueId = createIssue(newIssue);
-        Set<Issue> newIssues = getIssues();
+        Set<IssueData> oldIssue = getIssues();
+        IssueData newIssueData = new IssueData().withSubject("Test issueV").withDescription("New test issueV");
+        int issueId = createIssue(newIssueData);
+        Set<IssueData> newIssue = getIssues();
         //oldIssues.add(newIssue.withId(issueId));
-        assertEquals(newIssues, oldIssues);
+        assertEquals(newIssue, oldIssue);
     }
 
-    private Set<Issue> getIssues() throws IOException {
+    private Set<IssueData> getIssues() throws IOException {
         String json = RestAssured.get("https://bugify.stqa.ru/api/issues.json").asString();
         JsonElement parsed = new JsonParser().parse(json);
         JsonElement issues = parsed.getAsJsonObject().get("issues");
-        return new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {
+        return new Gson().fromJson(issues, new TypeToken<Set<IssueData>>() {
         }.getType());
     }
 
-    private int createIssue(Issue newIssue) throws IOException {
+    private int createIssue(IssueData newIssueData) throws IOException {
         String json = given()
-                .parameter("subject", newIssue.getSubject())
-                .parameter("description", newIssue.getDescription())
+                .parameter("subject", newIssueData.getSubject())
+                .parameter("description", newIssueData.getDescription())
                 .post("https://bugify.stqa.ru/api/issues.json").asString();
         JsonElement parsed = new JsonParser().parse(json);
         return parsed.getAsJsonObject().get("issue_id").getAsInt();
