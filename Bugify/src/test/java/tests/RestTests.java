@@ -23,12 +23,12 @@ public class RestTests extends TestBase {
         IssueData newIssue = new IssueData().withSubject("Test issueV").withDescription("New test issueV");
         int issueId = createIssue(newIssue);
         Set<IssueData> newIssueData = getIssues();
-        //oldIssues.add(newIssue.withId(issueId));
+        oldIssueData.add(newIssue.withId(issueId));
         assertEquals(newIssueData, oldIssueData);
     }
 
     private Set<IssueData> getIssues() throws IOException {
-        String json = getExecutor().execute(Request.Get("https://bugify.stqa.ru/api/issues.json"))
+        String json = getExecutor().execute(Request.Get("https://bugify.stqa.ru/api/issues.json?limit=500"))
                 .returnContent().asString();
         JsonElement parsed = new JsonParser().parse(json);
         JsonElement issues = parsed.getAsJsonObject().get("issues");
