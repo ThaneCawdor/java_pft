@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.openqa.selenium.remote.Browser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
@@ -19,11 +20,10 @@ import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.openqa.selenium.remote.BrowserType.CHROME;
 
 public class TestBase {
     protected static final ApplicationManager app
-            = new ApplicationManager(System.getProperty("browser", CHROME));
+            = new ApplicationManager(System.getProperty("browser", Browser.CHROME.browserName()));
     Logger logger = LoggerFactory.getLogger(GroupCreationTests.class);
 
     @BeforeSuite(alwaysRun = true)

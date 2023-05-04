@@ -3,7 +3,7 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -36,11 +36,11 @@ public class ApplicationManager {
         dbHelper = new DbHelper();
 
         if ("".equals(properties.getProperty("selenium.server"))) {
-            if (browser.equals(BrowserType.CHROME)) {
+            if (browser.equals(Browser.CHROME.browserName())) {
                 wd = new ChromeDriver();
-            } else if (browser.equals(BrowserType.FIREFOX)) {
+            } else if (browser.equals(Browser.FIREFOX.browserName())) {
                 wd = new FirefoxDriver();
-            } else if (browser.equals(BrowserType.SAFARI)) {
+            } else if (browser.equals(Browser.SAFARI.browserName())) {
                 wd = new SafariDriver();
             }
         } else {

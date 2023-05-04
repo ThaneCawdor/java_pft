@@ -83,7 +83,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void returnToContactPage() {
-        if (isElementPresent(By.xpath("xpath=//input[@name='searchstring']"))) {
+        if (isElementPresent(By.xpath("//input[@name='searchstring']"))) {
             return;
         }
         click(By.linkText("home"));
