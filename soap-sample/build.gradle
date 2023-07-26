@@ -20,6 +20,7 @@ dependencies {
     implementation 'jakarta.jws:jakarta.jws-api:3.0.0'
     implementation 'jakarta.xml.ws:jakarta.xml.ws-api:4.0.0'
     implementation 'com.sun.xml.ws:jaxws-rt:4.0.1'
+    implementation 'org.testng:testng:7.1.0'
 }
 
 wsdl2java {
