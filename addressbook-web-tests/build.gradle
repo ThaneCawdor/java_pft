@@ -8,17 +8,16 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.testng:testng:7.1.0'
     testImplementation 'org.testng:testng:7.7.0'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.8.3'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.8.3'
     testImplementation 'org.hamcrest:hamcrest:2.2'
-    implementation 'com.beust:jcommander:1.78'
-    implementation 'com.thoughtworks.xstream:xstream:1.4.19'
-    implementation 'com.google.code.gson:gson:2.10'
+    testImplementation 'com.beust:jcommander:1.78'
+    testImplementation 'com.thoughtworks.xstream:xstream:1.4.19'
+    testImplementation 'com.google.code.gson:gson:2.10'
     testImplementation 'ch.qos.logback:logback-classic:1.4.5'
-    implementation 'mysql:mysql-connector-java:8.0.28'
-    implementation 'org.hibernate:hibernate-core:5.6.14.Final'
-    implementation 'io.github.bonigarcia:webdrivermanager:5.3.0'
+    testImplementation 'mysql:mysql-connector-java:8.0.28'
+    testImplementation 'org.hibernate:hibernate-core:5.6.14.Final'
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.3.0'
 }
 
 task testGroups(type: Test) {
